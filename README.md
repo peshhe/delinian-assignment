@@ -53,12 +53,11 @@ The source code has been modified <!--to read environment variables-->for establ
 
 ## Prerequisites
 
-This repo is designed to work with https://github.com/peshhe/assignment-terraform.
+Before running the automation in this repository, ensure that the necessary infrastructure is set up using the [assignment-terraform](https://github.com/peshhe/assignment-terraform) repository.
 
-In order for the automated GitHub Actions Workflow (CI/CD pipeline) to run successfully you will first need to have the Azure infrastrure deployed. And then to add the credentials as Actions' Secrets to the GitHub repo.
+In order for the automated GitHub Actions Workflow (CI/CD pipeline) to run successfully you will also need to set up the Azure credentials as GitHub Actions Secrets in the GitHub repo.
 
-In the GitHub UI, navigate to your forked repository and select "Security" > "Secrets and variables" > "Actions". Select "New repository secret" to add the following secrets one by one:
-
+In the GitHub UI, navigate to your forked repository and select Security > Secrets and variables > Actions. Select New repository secret to add the following secrets one by one:
 
 |Secret|Value|
 |---|---|
