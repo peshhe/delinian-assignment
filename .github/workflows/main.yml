@@ -7,9 +7,14 @@ on:
     branches: [ "production", "main" ]
 
 env:                                # setting variables to be used within the jobs
-  Docker_image_name: py-flask-app   # also stands for Repository name inside ACR
-  Azure_Container_Instance_name: aci-py-flask-app
+  Docker_image_name: testing01-py-flask-app   # also stands for Repository name inside ACR
+  Azure_Container_Instance_name: testing01-aci-py-flask-app
   Location: "west europe"
+  PY_APP_HOST: ${{ secrets.DB_HOST }}
+  PY_APP_USER: ${{ secrets.DB_USER }}
+  PY_APP_PASS: ${{ secrets.DB_PASS }}
+  PY_APP_PORT: ${{ secrets.DB_PORT }}
+  PY_APP_DATABASE: ${{ secrets.DB_DATABASE }}
 
 jobs:
   build-push-deploy:

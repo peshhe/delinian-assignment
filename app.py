@@ -1,13 +1,22 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 
 app = Flask(__name__)
-host        = "postgre-server-peshh.postgres.database.azure.com" # hostname of the PostgreSQL Database Server
-username    = f"admUser@{host}"     # hostname of the PostgreSQL Database Server
-password    = "adm!nPassw0rd"       # hostname of the PostgreSQL Database Server
-port        = "5432"                # hostname of the PostgreSQL Database Server
-database    = "postgre-database"    # hostname of the PostgreSQL Database Server
+
+# host        = "postgre-server-peshh.postgres.database.azure.com" # hostname of the PostgreSQL Database Server
+# username    = f"admUser@{host}"     # hostname of the PostgreSQL Database Server
+# password    = "adm!nPassw0rd"       # hostname of the PostgreSQL Database Server
+# port        = "5432"                # hostname of the PostgreSQL Database Server
+# database    = "postgre-database"    # hostname of the PostgreSQL Database Server
+
+host        = os.getenv("PY_APP_HOST", "postgre-server-peshh.postgres.database.azure.com")
+username    = os.getenv(f"PY_APP_USER@{host}", f"admUser@{host}")
+password    = os.getenv("PY_APP_PASS", "adm!nPassw0rd")
+port        = os.getenv("PY_APP_PORT", "5432")
+database    = os.getenv("PY_APP_DATABASE", "postgre-database")
+
 full_string = f"{username}:{password}@{host}:{port}/{database}"
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{full_string}'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dbtest.db'
